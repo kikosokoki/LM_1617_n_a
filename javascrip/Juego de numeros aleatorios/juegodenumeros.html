@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+        <script src="jquery-1.11.2.min.js"></script>
+    
+<style>
+        body{
+            background-color: #F3E2A9;
+            text-align: center;
+            border:brown dashed;
+        
+        }
+        img{border-radius: 100px;
+        }
+        h1{color: red;
+        
+        }
+        h3{color:darkslategrey;
+            font-family: sans-serif;
+            
+        
+        }
+        #ni{color:blue;
+        
+        }
+        #num{
+            border-color:fuchsia;
+        
+        }
+        #bnum{
+            border-bottom-color: aqua;
+        
+        }
+        #res{border-bottom-color: darkblue;}
+    
+        
+       
+        
+    
+    
+    
+    
+    
+    
+    </style>
+</head>
+
+<body>
+    
+    
+    <h1>JUEGO DE NUMEROS</h1>
+    <h3>Inserte valores a comprobar:</h3>
+    <input id="num" type="text"><br><br>
+    <input id="bnum" type="button" value="Comprobar">
+    <input id="res" type="button" value="Resultado (Sólo para perdedores)">
+    <br>
+    <p id="contador">Contador</p>
+    <p id="ni"><b>NUMEROS INTRODUCIDOS:</b></p>
+    <p id="numintro"></p>
+    <div id="foto"></div>
+    
+     
+    <script>
+        $(function(){
+            var numaleatorio = parseInt(Math.random()*100);
+            
+            var contador=0;
+            $("#bnum").click(function(){
+                var camptext=parseInt($("#num").val());
+               
+             if(contador<5){   
+                if(camptext==numaleatorio){
+                    alert("PREMIO, HAS ACERTADO!!!");
+                    contador=0;
+                 $("#contador").text("Contador: " + contador);
+                 numaleatorio = parseInt(Math.random()*100);
+                    $("#foto").append("<img style='width:200px' src=premio.jpg>");
+                    
+                }else {
+                  if (camptext<numaleatorio) {   
+                      alert("El numero introducido es menor que el que buscamos");
+                      $("#numintro").append(camptext + " es menor que el numero que buscamos" + "<br />");
+                
+                  }else {
+                      alert("El numero introducido es mayor que el que buscamos");
+                      $("#numintro").append(camptext + " es mayor que el numero que buscamos" + "<br />");
+                  
+                  }
+                    
+                  contador++;
+                    $("#contador").text("Contador: " + contador);
+                    
+                    
+                
+                
+                
+                }
+                
+             }else{
+                 alert("HAS PERDIDO!!, el numero aleatorio era " + numaleatorio + ". Inténtalo de nuevo." );
+                 $("#foto").append("<img src=perdido.jpg>");
+                 contador=0;
+                 $("#contador").text("Contador: " + contador);
+                 numaleatorio = parseInt(Math.random()*100);
+                
+                 
+                 
+                 
+                 
+             }
+                
+                
+            });
+            
+            $("#res").click(function(){
+                alert("(ಠ_ಠ) " + numaleatorio + " (ಠ_ಠ) ");
+               
+            
+            
+            
+            
+            });
+        
+        });
+    
+    </script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</body>
+</html>

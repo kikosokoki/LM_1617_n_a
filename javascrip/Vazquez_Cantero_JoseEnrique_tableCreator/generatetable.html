@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="stilo.css">
+    <script src="jquery-1.11.2.min.js"></script>
+</head>
+
+<body>
+    
+    <div class="contenedor">
+    
+        <span>Filas</span><input type="text" size="8" id="filas">
+            
+        <span>Columnas</span> <input type="text" size="8" id="columnas">
+        
+        <br><br>
+            
+        <input type="button" id="generar" value="Generar"> 
+        
+        <input type="button" id="borrar" value="Borrar"> 
+        
+        <br><br>
+        
+        
+        <table id="tabla" border=1 align="center"> 
+    </table>
+    </div>
+    
+    
+    
+    
+    <script>
+
+    $(function() {
+    
+    var contador=0;
+    
+    $('#generar').click(function() {
+        
+        var numcolumnas = $("#columnas").val();
+        var numfilas = $("#filas").val();
+
+    
+        $("#tabla").html("");
+        
+        var celda = "";    
+        
+        for(i=0; i<numfilas;i++) {        
+         
+            
+            celda+="<tr>";
+                
+                    for(j=0; j<numcolumnas;j++) { 
+                    celda+="<td>H</td>";
+                   
+                    }
+            
+            celda+="</tr>";
+            $("#tabla").html(celda);
+                     
+                       
+        }
+    });
+    });
+        
+        
+        $(function() {
+           $('#borrar').click(function() {
+              $('#tabla').html(''); 
+           }); 
+        });
+</script>
+</body>
+</html>

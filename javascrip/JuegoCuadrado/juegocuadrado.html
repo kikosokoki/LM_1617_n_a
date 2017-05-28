@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jquery-1.11.3.js"></script>
+    <script src="jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+    
+    <style>
+        body {
+            text-align: center;
+            margin: 0px auto;
+            border: 10px solid black;
+            width: 700px;
+            height: 400px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+        <h4 id="puntuacion">Puntuacion: </h4>
+        
+        <canvas id="cuadrado"></canvas>
+    
+
+    
+    <script type="text/javascript">
+        var x = 20;
+        var y = 20;
+        
+        var canvas = document.getElementById("cuadrado");
+        
+        var ctx = canvas.getContext("2d");
+        
+        var contador = 1;
+        
+        ctx.fillStyle = "red";
+        
+        ctx.fillRect(x, y, 20, 20);
+        
+        
+        function limpieza() {
+            ctx.clearRect(x,y,20,20);
+            x=Math.floor((Math.random()*680)+1);
+            y=Math.floor((Math.random()*380)+1);
+            ctx.fillStyle = "red";
+            ctx.fillRect(x, y, 20, 20);
+            
+        };
+            
+            
+            
+            
+            setInterval(limpieza, 1000);
+            
+            $("#cuadrado").click(function(event) {
+               var pos = $("#cuadrado").offset();
+                
+                var x1=event.pageX-pos.left;
+                
+                var y1=event.pageY-pos.top;
+                
+                /* no llego a ver como capturar el espacio dentro del cuadrado, he modificado de todas las formas los tamaños y a cada cual peor, teoricamente el if junto con el offset deberia funcionar, pero creo que no estoy capturando bien la posición */
+                
+                if ((x1>x) && (x1<x+50) && (y1>y) && (y1<y+50)) {
+                    
+                      
+                    
+                    $("h4").html("Puntuación: "+ contador++);
+                    }
+                
+            });  
+    
+    </script>
+    
+
+</body>
+</html>
